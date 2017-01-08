@@ -1,7 +1,7 @@
 function init () {
   var img = [
-    3831,  // original width of image
-    3101   // original height of image
+    28692,  // original width of image
+    1698   // original height of image
   ]
   // create the map
   var map = L.map('map', {minZoom: 0})
@@ -9,7 +9,8 @@ function init () {
   // assign map and image dimensions
   var rc = new L.RasterCoords(map, img)
   // set max zoom Level (might be `x` if gdal2tiles was called with `-z 0-x` option)
-  map.setMaxZoom(rc.zoomLevel())
+//  map.setMaxZoom(rc.zoomLevel())
+  map.setMaxZoom(9)
   // set the view in the middle of the image
   map.setView(rc.unproject([img[0] / 2, img[1] / 2]), 2)
 
@@ -37,9 +38,6 @@ function init () {
   // the tile layer containing the image generated with gdal2tiles --leaflet ...
   L.tileLayer('./tiles/{z}/{x}/{y}.png', {
     noWrap: true,
-    attribution: 'Map <a href="https://commons.wikimedia.org/wiki/' +
-      'File:Karta_%C3%B6ver_Europa,_1672_-_Skoklosters_slott_-_95177.tif">' +
-      'Karta över Europa, 1672 - Skoklosters</a> under ' +
-      '<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>'
+    attribution: 'Test'
   }).addTo(map)
 }
