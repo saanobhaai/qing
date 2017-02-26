@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qianlong Scroll IV</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/Control.MiniMap.css" />
+    <link rel="stylesheet" href="css/main-styles.css" />
+  </head>
+  
+  <body>
+    <div id="container">
+      <div id="map-container">
+        <nav class="navbar navbar-default navbar-static-top">
+          <div id="map-title" class="container">Qianlong Scroll IV</div>
+        </nav>
+        <div id="map"></div>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+      var img = [
+        28692,  // original width of image
+        1698   // original height of image
+      ];
+      var centerRaster = [img[0]/2, img[1]/2];
+      var startSW = [26700, 1200];
+      var startNE = [28000, 450];
+      var mapMinZoom = 2;
+      var mapMaxZoom = 9;
+      var rasterUrl = './tiles/q4/{z}/{x}/{y}.png';
+      var rasterAttrib = 'The Metropolitan Museum of Art, Columbia University, Asia for Educators Program, & Visual Media Center, copyright ©2017';
+      var minWidthForMiniMap = 1150;
+      var fixedMiniMapMinWidth = '65%';
+      var miniMapZoom = 2;
+      var miniMapHeight = '90px';
+
+      var places = {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [28027,1300]
+            },
+            "properties": {
+              "id": 1,
+              "title": "Seals & Text",
+              "icon-color": "red",
+              "place-type": "default",
+              "content": "Unrolling the scroll, the painting is framed by a strip of brocade where three large seals of the Qianlong Emperor have been placed. One of the seals, <i>Taishang huangdi zhibao</i>, was only used by the emperor after he retired from the throne in 1795, so these seals were added long after the painting was completed. The four smaller seals at the edges of the brocade strip also belong to the Qianlong Emperor and were probably added when the scroll was first mounted.<br><br>The painting was inscribed by Grand Secretary Yu Minzhong (1714-1780), who for many years served as the editor of the Emperor's poetry, with a poem composed by the Qianlong Emperor:<i><br><br>	By the side of the imperial stele pavilion, the clear and muddy [rivers] converge,<br>	As we look upstream at the Tushan channel,<br>	The [Kangxi Emperor's past] efforts allow [our present] leisure.<br>	The fields, the populace, might be harmed,<br>	But for this continuing vigilance.<br>	Sustain the flow and prevent disaster.<br>	The Gao[jia] Dike prudently rebuilt by [Kangxi's] imperial [order],<br>	For ten-thousand autumns the Huai region will rely on this precious flow.<br><br>		Imperial composition respectfully following the rhyme<br>		Of a poem by the Imperial Ancestor [Kangxi],<br>		Inspecting the Huai and Huang [Yellow] Rivers.<br>		Respectfully inscribed upon imperial command by your servitor,<br>		Yu Minzhong</i><br><br>(Trans. after Ju-hsi Chou and Claudia Brown. <i>The Elegant Brush: Chinese Painting Under the Qianlong Emperor, 1735-1795.</i> Phoenix: The Phoenix Art Museum, 1985, p. 40)"
+            }
+          },
+            {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [26127,1400]
+            },
+            "properties": {
+              "id": 2,
+              "title": "Farmhouses",
+              "icon-color": "red",
+              "place-type": "default",
+              "content": "The scroll opens on the north shore of the Yellow River, where we see a cluster of farmhouses in the foreground and some figures boarding a boat. Note the relative height and anatomical accuracy of the figures in this scroll as compared with those in the Kangxi Emperor's southern inspection tour scrolls. The artist, Xu Yang, was influenced by European Jesuit artists attached to the Qing court, and in his effort to make his depiction of the Qianlong Emperor's southern tour more realistic, he adopted some European representational techniques, including a more accurate mode of depicting human figures as well as a limited use of perspective in depicting recession into space. <br><br><a href=\"art/index.html\" target=\"_blank\"><font color =\"#cc3300\">See \"Grandeur of Art during the Qing\" to learn more about the differences between European and Chinese approaches to depicting figures as well as the illusion of three-dimensional space.</font></a>"
+            }
+          },
+            {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [15360,990]
+            },
+            "properties": {
+              "id": 3,
+              "title": "Emperor's Inspection—A",
+              "icon-color": "red",
+              "place-type": "default",
+              "content": "Qianlong Emperor stands at the edge of the spillway that directs the Huai River into the Yellow River and gestures to a kneeling official (most likely Gao Bin [1683-1755], the regional director-general of the Grand Canal and Yellow River Conservancy). Other officials stand in attendance, including a servant with a gold parasol, eight sumptuously garbed chairbearers, and members of the imperial bodyguard wearing yellow tunics and variously armed with swords, spears, or bows. Numerous other local officials and populace of the region are also present to welcome the emperor and are shown kneeling and bowing in his presence.<br><br>Zoom out to see the shift in the color of the water in the area toward which the Emperor directs his gaze. Here the artist has depicted the clear, blue waters of the Huai River flowing into the silt-laden Yellow River."
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [11161,996]
+            },
+            "properties": {
+              "id": 4,
+              "title": "Water Gate—B",
+              "icon-color": "red",
+              "place-type": "default",
+              "content": "A water gate that serves to reduce the force and flow of water into the Grand Canal has been constructed out of earthen dikes with projecting arms made from densely packed bundles of sorghum (<em>gaoliang</em>). More bundles of sorghum have been stacked nearby for use in plugging holes in the dikes. The dense root system of the sorghum plant helps to catch and bind together the fine loess soil. Earth and rock are then piled on top of the sorghum, which is further stabilized by wood pilings driven into the body of the levee.  (For a fuller discussion and illustration of dike construction techniques during this time, see Champ Clark, <em>Planet Earth: Flood</em>, Alexandria, Virginia: Time-Life Books, 1982, pp. 54-63).<br><br>At the far end of the water gate is an ornamental arch (<em>pailou</em>) bearing a placard that reads \"Eternal blessings for pacifying the waters."
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [5469,1081]
+            },
+            "properties": {
+              "id": 5,
+              "title": "Dike Construction Techniques—C",
+              "icon-color": "red",
+              "place-type": "default",
+              "content": "Groups of workers employ various techniques to strengthen the earthen dike: At right, workers use large stone weights to pound the earth—after repeated pounding, the fine wind-blown loess soil becomes almost as hard as concrete; at left, a long row of two-man teams use heavy sledges to compact the earth; scroll left to see a steady stream of workers moving earth from behind the dike to its top in order to raise it higher; scroll further to see how this earthen barrier is connected to the Gaojia Levee, which is faced with stone to resist erosion from the wave action of the large lake that has formed in this region. Further to the left on the other side of the levee is a marshy lowland, where stacks of wooden pilings are stockpiled for use in reinforcing the dikes in times of flooding. (For a fuller discussion and illustration of dike construction techniques during this time, see Champ Clark, <i>Planet Earth: Flood</i>, pp. 54-63).<br><br>Interestingly, the Qianlong <i>Inspection Tour</i> scroll's depiction of dike construction as a controlled, orderly operation in the face of a relatively calm river contrasts strongly with the <a href=\"other/compare-k4.htm\" target=\"_blank\"><font color =\"#cc3300\">treatment of the same subject in the Kangxi <em>Inspection Tour</em></font></a>, where the workers are shown scurrying about in a frenzy of activity as the river swells behind them wildly. It could be said that overall the two sets of <em>Inspection Tour</em> paintings actually reflect the personalities of the two emperors: The Kangxi set shares in the adventurous spirit of that monarch—it is filled with surprises, touches of humor, and glimpses of the harsher side of life. The Qianlong set, on the other hand, reflects that emperor's desire for a sanitized and idealized image of his reign in which he sat at the center of a totally ordered realm."
+            }
+          }
+        ]
+      };
+    </script>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="js/rastercoords.js"></script>
+    <script src="js/Control.MiniMap.js"></script>
+    <script src="js/scrollmap.js"></script>
+  </body>
+</html>

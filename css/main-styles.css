@@ -1,0 +1,177 @@
+html, body, #container {
+  width: 100%;
+  height: 100%;
+  background-color: #dddddd;
+}
+
+body {
+  //padding: 30px 0 0;
+}
+/*
+#container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+*/
+.navbar {
+  margin-bottom: 0;
+  min-height: 30px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.leaflet-bottom {
+  //width: 100%;
+  //left: 20px;
+  //bottom: -50px;
+  //transform: translate(0px,100px);
+}
+
+.leaflet-top {
+    //top: 100px;
+}
+
+//.leaflet-container {
+//    height: 100%;
+//}
+
+.header2 {
+  font-size:24px;
+  line-height: 1.1;
+  font-family:Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+  margin-bottom: 10px;
+}
+
+#map-container {
+  width:auto;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  padding:0; 
+}
+
+#map {
+  width: auto;
+  height: 100%;
+}
+
+.leaflet-control-minimap {
+  border: none;
+  //background-color:rgba(255,0,0,0.0);
+}
+
+.leaflet-control-minimap-toggle-display{
+	background-image: url("../img/toggle.svg");
+}
+
+.leaflet-oldie .leaflet-control-minimap-toggle-display{
+	background-image: url("../img/toggle.png");
+}
+
+.leaflet-right {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.leaflet-right .leaflet-control {
+  margin-right: 0;
+}
+
+.leaflet-popup-scrolled {
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+/* this shifts both main map and inset map, as they are named the same thing
+.leaflet-pane .leaflet-tile-pane {
+   transform: translate(0px,-100px);
+}
+and this might be grabbing the div outside the tile but not sure and doesn't work
+.leaflet-pane .leaflet-map-pane {
+  transform: translate(0px,-100px);
+}
+*/
+
+#map-title {
+  width: 100%;
+  height: 30px;
+  margin:0;
+  padding-left:10px;
+  font-size:18px;
+  font-family:Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+  color:#fff;
+  background-color:#222;
+}
+
+#info-area {
+    width:100%;
+    height:25%;
+    margin-top:30px;
+    padding-left:10px;
+    padding-right:0px;
+}
+
+#credit-area {
+    margin:0;
+    font-size:10px;
+    padding-top:15px;
+}
+
+#graphic {
+    //height:100%;
+    //border: 1px solid red;
+}
+
+.place {
+  position: absolute;
+}
+
+.place-content {
+  max-height: 300px;
+  overflow: auto;
+  padding-right: 10px;
+}
+
+.leaflet-popup-content p {
+  //margin-right: 10px;
+  //margin-top: 10px;
+  margin: 0px;
+  padding-right: 10px;
+  //padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.close {
+  color: #fff;
+  font-size: 25px;
+  opacity: 1;
+}
+
+.close:focus, .close:hover {
+  color: #f6f6f6;
+}
+
+#start {
+  top: 30%;
+  left: 87%;
+}
+
+#place2 {
+  top: 30%;
+  left: 65%;
+}
+
+#place3 {
+  top: 8%;
+  left: 40%;
+}
+
+#place4 {
+  top: 8%;
+  left: 5%;
+}
